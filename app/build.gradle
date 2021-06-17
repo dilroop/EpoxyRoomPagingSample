@@ -42,12 +42,14 @@ android {
 
 dependencies {
     def roomVersion = "2.3.0"
+    def epoxyVersion = "4.6.2"
     implementation project(":room")
 
-    def epoxyVersion = "4.6.2"
     // State Management with Mavericks
     implementation "com.airbnb.android:mavericks:2.3.0"
 
+    // Epoxy Paging
+    implementation "com.airbnb.android:epoxy-paging:$epoxyVersion"
     // UI Framework
     implementation "com.airbnb.android:epoxy:$epoxyVersion"
 

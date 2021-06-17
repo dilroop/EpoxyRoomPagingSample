@@ -1,5 +1,6 @@
 package com.example.room
 
+import androidx.paging.DataSource
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -8,22 +9,25 @@ import io.reactivex.rxjava3.core.Observable
 
 
 @Dao
-abstract class UserDao {
+interface UserDao {
+    @get:Query("SELECT * FROM users")
+    val dataSource: DataSource.Factory<Int, User>
+
     @Query("SELECT * FROM users")
-    abstract fun getAll(): Observable<List<User>>
+    fun getAll(): Observable<List<User>>
 
     @Query("SELECT * FROM users WHERE uid IN (:userIds)")
-    abstract fun loadAllByIds(userIds: IntArray): List<User>
+    fun loadAllByIds(userIds: IntArray): List<User>
 
     @Query("SELECT * FROM users WHERE first_name LIKE :first AND last_name LIKE :last LIMIT 1")
-    abstract fun findByName(first: String, last: String): User
+    fun findByName(first: String, last: String): User
 
     @Query("SELECT * FROM users WHERE email LIKE :email LIMIT 1")
-    abstract fun findByEmail(email: String): User
+    fun findByEmail(email: String): User
 
     @Insert
-    abstract fun insertAll(vararg users: User)
+    fun insertAll(vararg users: User)
 
     @Delete
-    abstract fun delete(user: User)
+    fun delete(user: User)
 }

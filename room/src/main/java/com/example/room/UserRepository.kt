@@ -1,11 +1,15 @@
 package com.example.room
 
 import android.content.Context
+import androidx.lifecycle.LiveData
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import androidx.room.Room
 import io.reactivex.rxjava3.core.Observable
 
 class UserRepository(context: Context) {
     companion object {
+        private const val PAGE_SIZE = 1
         private const val DATABASE_NAME = "custom_database"
     }
 
@@ -14,6 +18,10 @@ class UserRepository(context: Context) {
         AppDatabase::class.java,
         DATABASE_NAME
     ).build().userDao()
+
+    val pagedList: LiveData<PagedList<User>> by lazy {
+        LivePagedListBuilder<Int, User>(userDao.dataSource, PAGE_SIZE).build()
+    }
 
     fun getAll(): Observable<List<User>> {
         return userDao.getAll()
