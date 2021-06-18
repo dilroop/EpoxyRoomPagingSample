@@ -1,6 +1,7 @@
-package com.example.roompaging
+package com.example.roompaging.view
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import android.widget.ProgressBar
@@ -17,6 +18,7 @@ class LoadingView @JvmOverloads constructor(
         val progressBar = ProgressBar(this.context)
         progressBar.isIndeterminate = true
         this.addView(progressBar)
+        setBackgroundColor(Color.RED)
         setPadding(0, 16, 0, 16)
     }
 }

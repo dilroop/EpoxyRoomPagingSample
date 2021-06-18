@@ -1,4 +1,4 @@
-package com.example.roompaging
+package com.example.roompaging.view
 
 import android.content.Context
 import android.util.AttributeSet

@@ -3,7 +3,6 @@ package com.example.room
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import io.github.serpro69.kfaker.Faker
 
 @Entity(tableName = "users")
 data class User(
@@ -18,16 +17,4 @@ data class User(
 
     @ColumnInfo(name = "email")
     val email: String?
-) {
-    companion object {
-        private val faker = Faker()
-        fun createDummyUser(): User {
-            val name = faker.name.unique
-            return User(
-                firstName = name.firstName(),
-                lastName = name.lastName(),
-                email = "${name.firstName()}.${name.lastName()}@gmail.com"
-            )
-        }
-    }
-}
+)

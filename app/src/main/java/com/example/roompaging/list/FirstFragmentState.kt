@@ -1,4 +1,4 @@
-package com.example.roompaging
+package com.example.roompaging.list
 
 import com.airbnb.mvrx.MavericksState
 

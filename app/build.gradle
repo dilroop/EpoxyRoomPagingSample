@@ -52,11 +52,9 @@ dependencies {
     implementation "com.airbnb.android:epoxy-paging:$epoxyVersion"
     // UI Framework
     implementation "com.airbnb.android:epoxy:$epoxyVersion"
-
     // Add the annotation processor if you are using Epoxy's annotations (recommended)
     kapt "com.airbnb.android:epoxy-processor:$epoxyVersion"
 
-    // optional - RxJava3 support for Room
     implementation "androidx.room:room-rxjava3:$roomVersion"
 
     implementation 'androidx.core:core-ktx:1.5.0'

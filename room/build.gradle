@@ -44,12 +44,11 @@ dependencies {
     def epoxyVersion = "4.6.2"
 
     implementation "androidx.room:room-runtime:$roomVersion"
-    implementation 'io.github.serpro69:kotlin-faker:1.7.1'
 
     // Epoxy Paging
     implementation "com.airbnb.android:epoxy-paging:$epoxyVersion"
-
     kapt "androidx.room:room-compiler:$roomVersion"
+
     // optional - RxJava3 support for Room
     implementation "androidx.room:room-rxjava3:$roomVersion"
 

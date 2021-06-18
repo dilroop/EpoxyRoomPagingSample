@@ -1,6 +1,7 @@
-package com.example.roompaging
+package com.example.roompaging.list
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,10 @@ import com.airbnb.mvrx.MavericksView
 import com.airbnb.mvrx.fragmentViewModel
 import com.example.room.User
 import com.example.roompaging.databinding.FragmentFirstBinding
+import com.example.roompaging.view.LoadingViewModel_
+import com.example.roompaging.view.UserViewModel_
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 
 class FirstFragment : Fragment(), MavericksView {
 
@@ -33,13 +38,12 @@ class FirstFragment : Fragment(), MavericksView {
         }
     }
 
-    override fun invalidate() {
-        //binding.recycler.requestModelBuild()
-    }
+    override fun invalidate() { }
 }
 
-class UserPagedListController : PagedListEpoxyController<User>() {
+class UserPagedListController() : PagedListEpoxyController<User>() {
     override fun buildItemModel(currentPosition: Int, item: User?): EpoxyModel<*> {
+
         return if (item == null) {
             LoadingViewModel_().id(currentPosition)
         } else {

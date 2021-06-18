@@ -1,4 +1,4 @@
-package com.example.roompaging
+package com.example.roompaging.list
 
 import android.app.Application
 import android.util.Log
@@ -9,6 +9,7 @@ import com.airbnb.mvrx.MavericksViewModelFactory
 import com.airbnb.mvrx.ViewModelContext
 import com.example.room.User
 import com.example.room.UserRepository
+import com.example.roompaging.DemoApplication
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -26,9 +27,7 @@ class FirstFragmentViewModel(
         repository.insertAll(*users.toTypedArray())
     }
 
-    val pagedList: LiveData<PagedList<User>> by lazy {
-        repository.pagedList
-    }
+    val pagedList: LiveData<PagedList<User>> by lazy { repository.pagedList }
 
     init {
         Log.d("ViewModel", "Initialized")
